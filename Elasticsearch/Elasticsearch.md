@@ -19,3 +19,6 @@
 - 비즈니스 분석
 
 ### Elasticsearch 아키텍처
+
+![아키텍처](https://user-images.githubusercontent.com/48544100/155345162-636c815a-0087-4ef4-9f86-be45525952d6.JPG)
+
