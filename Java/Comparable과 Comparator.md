@@ -50,6 +50,7 @@ public abstract class Car implements Comparable<Car> {
     
     @Override
     public int compareTo(Car o) {
+        // 가격을 정렬 값으로 잡음
         return this.pay - o.pay;
         
     }
@@ -81,18 +82,41 @@ public class Main {
 ```
 
 ### 결과 보고
-- ⓐ
-  - 다음 에러 발생  
-    >    reason: no instance(s) of type variable(s) T exist so that ToyCar conforms to Comparable<? super T>  
-                 
-    ![Comparable_2_ToyCar](https://user-images.githubusercontent.com/48544100/157258623-bad16c0c-4182-4963-b405-e129e60757b6.JPG)
-- ⓑ
+
+#### · ⓐ 상황 
+
+:exclamation: `다음과 같은 에러를 확인 할 수 있음`
+```text
+reason: no instance(s) of type variable(s) T exist so that ToyCar conforms to Comparable<? super T>
+T 유형의 인스턴스가 없기 때문에 ToyCar 객체는 제네릭 <T>가 아닌 Comparable한 제네릭 <super T>를 따라야합니다.
+```
+![Comparable_2_ToyCar](https://user-images.githubusercontent.com/48544100/157258623-bad16c0c-4182-4963-b405-e129e60757b6.JPG)
+
+해당 에러의 내용의 답은 [Collections.sort](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#sort-java.util.List) 에서 확인할 수 있었다.
+
+![Comparable_3_Collections_sort](https://user-images.githubusercontent.com/48544100/157269818-b5f76544-f701-4d5d-b796-6c8d34e60573.JPG)
+
+해당 내용 중 다음 설명이 중요하다.  
+`All elements in the list must implement the Comparable interface.`  
+`모든 구성은 Comparable 인터페이스를 구현해야합니다.`
+
+에러가 난 이유는 ToyCar는 Comparable 인터페이스를 구현하지 않아서 발생한 오류이다.
+
+
+#### · ⓑ 상황
+
+에러 없이 잘 동작하는 것을 확인할 수 있다. (오름차순으로 정렬)
+![Comparable_2_Car](https://user-images.githubusercontent.com/48544100/157258615-5b6a98d8-6223-4d41-b71a-5016b0686b52.JPG)
+![Comparable_2_Car_Result](https://user-images.githubusercontent.com/48544100/157258618-78c08f0c-0017-4462-a571-97072c8be311.JPG)
+
+---
 
 ## Comparator
 
-
-
+---
 
 ## 참고
 
-[자바 [JAVA] - Comparable 과 Comparator의 이해](https://st-lab.tistory.com/243)
+[자바 [JAVA] - Comparable 과 Comparator의 이해](https://st-lab.tistory.com/243)  
+[JavaDoc Comparable](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)  
+[JavaDoc Collections](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html)  
