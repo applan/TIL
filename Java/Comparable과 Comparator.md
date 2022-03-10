@@ -122,7 +122,7 @@ Break Point 를 걸어둔 소스
 #### ··· ⓑ의 동작을 디버깅하며 알아낸 것
 
 ##### 1. Collection.sort 동작시 매개변수 List 타입의 sort를 동작
-![Comparable_4_Debug_C_1](https://user-images.githubusercontent.com/48544100/157676751-3f60d7da-57c7-495f-8e9c-d53327eb8c83.JPG)
+![Comparable_4_Debug_C_1](https://user-images.githubusercontent.com/48544100/157676751-3f60d7da-57c7-495f-8e9c-d53327eb8c83.JPG)  
 <ArrayList 타입의 매개변수 -> ArrayList 의 sort 구현체를 사용 확인>
 ![Comparable_4_Debug_C_2](https://user-images.githubusercontent.com/48544100/157677120-5571ad2c-0630-4f20-b8c5-296cbdc838c4.JPG)
 ##### 2. [Arrays.sort(T\[\])](https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-T:A-int-int-java.util.Comparator) -> [Arrays.sort(Object\[\])](https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-java.lang.Object:A-int-int-) 사용
