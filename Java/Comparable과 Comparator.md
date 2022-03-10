@@ -69,7 +69,7 @@ public class Main {
         List<ToyCar> toyCars = new ArrayList<>(Arrays.asList(toyCar, luxuryToyCar));
         Collections.sort(toyCars);
 
-        // ⓑ 상황 ( Comparable 미구현 객체 )
+        // ⓑ 상황 ( Comparable 구현 객체 )
         Car niro = new Kia("니로", 2833, "G1.6 하이브리드", "트렌디");
         Car sportage = new Kia("스포티지", 2488, "G1.6 T-GDI엔진", "프레스티지");
         List<Car> kias = new ArrayList<>(Arrays.asList(niro, sportage));
@@ -108,6 +108,29 @@ T 유형의 인스턴스가 없기 때문에 ToyCar 객체는 제네릭 <T>가 �
 에러 없이 잘 동작하는 것을 확인할 수 있다. (오름차순으로 정렬)
 ![Comparable_2_Car](https://user-images.githubusercontent.com/48544100/157258615-5b6a98d8-6223-4d41-b71a-5016b0686b52.JPG)
 ![Comparable_2_Car_Result](https://user-images.githubusercontent.com/48544100/157258618-78c08f0c-0017-4462-a571-97072c8be311.JPG)
+
+#### · · ⓑ의 동작 확인해보기 
+
+디버깅 모드로 직접 동작하는 방식에 Break Point 를 걸어보았다.
+
+Break Point 를 걸어둔 소스
+![Comparable_3_Collections_BreakPoint](https://user-images.githubusercontent.com/48544100/157672959-6216ab09-3792-4866-93be-a65b99873e06.JPG)
+
+확인한 동작 순서
+![Comparable_4_Debug](https://user-images.githubusercontent.com/48544100/157676369-61659e79-cebe-4c7f-a3b3-189b94f75215.JPG)
+
+#### ··· ⓑ의 동작을 디버깅하며 알아낸 것
+
+##### 1. Collection.sort 동작시 매개변수 List 타입의 sort를 동작
+![Comparable_4_Debug_C_1](https://user-images.githubusercontent.com/48544100/157676751-3f60d7da-57c7-495f-8e9c-d53327eb8c83.JPG)
+<ArrayList 타입의 매개변수 -> ArrayList 의 sort 구현체를 사용 확인>
+![Comparable_4_Debug_C_2](https://user-images.githubusercontent.com/48544100/157677120-5571ad2c-0630-4f20-b8c5-296cbdc838c4.JPG)
+##### 2. [Arrays.sort(T\[\])](https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-T:A-int-int-java.util.Comparator) -> [Arrays.sort(Object\[\])](https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-java.lang.Object:A-int-int-) 사용
+![Comparable_4_Debug_C_3](https://user-images.githubusercontent.com/48544100/157678763-34c3a18f-920f-4173-976a-07dc68cead54.JPG)
+![Comparable_4_Debug_C_4](https://user-images.githubusercontent.com/48544100/157678767-1bb25576-0c5d-44b0-b87f-c7893563553c.JPG)
+
+
+
 
 ---
 
