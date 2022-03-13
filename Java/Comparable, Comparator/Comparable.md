@@ -1,4 +1,4 @@
-# [Comparable](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)  , [Comparator](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html)
+# [Comparable](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)
 > JAVA 1.8 버전기준
 ## Comparable
 > This interface imposes a total ordering on the objects of each class that implements it.  
@@ -128,9 +128,41 @@ Break Point 를 걸어둔 소스
 ##### 2. [Arrays.sort(T\[\])](https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-T:A-int-int-java.util.Comparator) -> [Arrays.sort(Object\[\])](https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-java.lang.Object:A-int-int-) 사용
 ![Comparable_4_Debug_C_3](https://user-images.githubusercontent.com/48544100/157678763-34c3a18f-920f-4173-976a-07dc68cead54.JPG)
 ![Comparable_4_Debug_C_4](https://user-images.githubusercontent.com/48544100/157678767-1bb25576-0c5d-44b0-b87f-c7893563553c.JPG)
+##### 3. 작은 리스트는 `Merge Sort`를 사용하지 않고 `mini-TimSort`를 사용
+![Comparable_4_Debug_C_5](https://user-images.githubusercontent.com/48544100/158061137-b9cd33db-77e6-48e3-a404-67dc7aa4dedb.JPG)
+##### 4. `Comparable` 인터페이스를 이용하여 정렬 
+![Comparable_4_Debug_C_6](https://user-images.githubusercontent.com/48544100/158061198-e4625d42-d889-4621-a17d-7e76ca6f3864.JPG)
+##### 5. 정렬 구현시 자주 사용하는 temp 변수를 두고 값 변경하는 것을 이용하여 값 순서 변경
+![Comparable_4_Debug_C_7](https://user-images.githubusercontent.com/48544100/158062412-60517189-df89-4c53-aa7a-ef619a07f6fd.JPG)
+
+---
+
+### 마치며
+
+Comparable 인터페이스를 이용하려면 compareTo() 메소드를 구현해야하며 Java에서는 기본적으로 
+같은 타입의 인스턴스 비교에는 모두 Comparable 인터페이스를 구현하고있다.
+따라서 Boolean을 제외한 래퍼 클래스나 String, Time, Date와 같은 클래스의 인스턴스는 모두 정렬이 가능합니다.
+이때 기본 정렬 순서는 `작은값 -> 큰 값`으로 정렬되는 `오름차순`이 됩니다.
 
 
+그럼 `오름차순`이 아닌 `내림차순`으로 정렬하고싶다면 어떻게 해야할까요?
+compareTo() 를 구현할때 다음과 같이 소스를 수정하면 됩니다.
+```text
 
+    public int compareTo(Car o) {
+        return this.pay - o.pay;  // 오름차순
+        -> return o.pay - this.pay; // 내림차순
+    }
+
+```
+
+하지만 기본적으로 `Comparable`은 오름차순을 기본으로 하기 때문에 해당 속성은 변경해주지 않는게 좋습니다.  
+
+저는 Comparable 공부를 마친 뒤 다음을 생각했습니다.
+- 정렬 필드가 한개가 아닌 경우 어떻게 해야할까?
+- 내림차순으로 정렬하고싶다면 어떻게 해야할까?
+
+해결 방법은 다음 공부할 `Comparator`에 있습니다.
 
 ---
 
