@@ -27,7 +27,7 @@ JavaDoc을 읽다보면 `Lists (and arrays) of objects that implement this inter
 >     3. 자동차 추상클래스는 다음을 포함해 구현한다.
 >     3.5 Comparable의 compareTo 메소드 구현 
 > 
->     두개의 객체를 만든 후 Collections.sort, Arrays.sort 를 사용해보자.
+>     두개의 객체를 만든 후 Collections.sort 를 사용해보자.
 
 ```java
 // Comparable 미구현 객체
