@@ -41,8 +41,8 @@
         name : 상품_2
     }
 ```
-
-간단하게 테스트 해본 인덱스 유무의 차이이다.
+---
+### 직접 보는 속도 차이
 
 |       |                                 |                         |
 |:-----:|:-------------------------------:|:-----------------------:|
@@ -70,6 +70,14 @@
 
 음식의 이름이 표기되고 그 뒤로 해당 음식의 요리 방법이 담겨있는 책의 페이지를 나타낸다.  
 만약 우리가 `제육볶음`이 먹고싶어서 음식을 찾는다면 책의 560 페이지를 펼쳐보면 되는 것. 
+
+### 생성 방법
+
+> [MongodbDoc - db.collection.createIndex()](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/)
+
+```text
+db.(collection).createIndex(MongoQuery)
+```
 
 
 ## 인덱스 관리를 위한 실용적인 조언
