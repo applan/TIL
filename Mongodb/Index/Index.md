@@ -79,14 +79,27 @@
 db.(collection).createIndex(MongoQuery)
 ```
 
+### 테스트 
+```text
+# test Collction 생성
+db.createCollection('test')
 
-## 인덱스 관리를 위한 실용적인 조언
+# 테스트 데이터 생성
+for(var i=0; i<3000000; i++) {
+    db.test.insert({
+        code: i
+        name: "상품_" + i
+    })
+}ㅏ
 
-## 복잡한 쿼리에 대한 복합 인덱스 사용
+# '제육볶음'에 해당하는 name 필드를 이용해 Index 생성
+db.test.createIndex({"name":1})
 
-## 쿼리 최적화
-
-## 모든 MongoDB 인덱싱 옵션
+# 검색 
+db.test.find({
+    name : "상품_2505030"
+})
+```
 
 ## 잘못된 인덱스
 
